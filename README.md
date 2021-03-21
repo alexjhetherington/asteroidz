@@ -1,5 +1,5 @@
 # asteroidz
-Asteroids in Unity3d. A simple portfolio piece.
+Asteroids in Unity3d. A simple portfolio piece. Unity 2019.22 LTS
 
 Using:
 * Prime[31] RecyclerKit for object pooling (changed a little bit)
