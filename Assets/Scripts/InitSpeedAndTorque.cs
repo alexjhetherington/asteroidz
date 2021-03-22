@@ -20,7 +20,12 @@ public class InitSpeedAndTorque : MonoBehaviour
     {
         Vector3 dir = RandomDirection ? Random.insideUnitCircle.normalized : new Vector2(transform.up.x, transform.up.y);
         _rigidBody.AddForce(dir * Random.Range(ThrustRange.x, ThrustRange.y), ForceMode2D.Impulse);
-        _rigidBody.AddTorque(Random.Range(TorqueRange.x, TorqueRange.y), ForceMode2D.Impulse);
+
+        //Cancel out intertia because it's calculated after a few frames for asteroids
+        //I believe it's because I'm using compound colliders (colliders in children)
+        //It means thrust values affect asteroids differently in the first few frames and it's annoying to deal with
+        float torque = Random.Range(TorqueRange.x, TorqueRange.y);
+        _rigidBody.AddTorque(torque * _rigidBody.inertia, ForceMode2D.Impulse); 
     }
 
     private void OnDisable()

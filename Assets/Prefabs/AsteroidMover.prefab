@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrustRange: {x: 5, y: 10}
-  TorqueRange: {x: -0.7, y: 0.7}
+  TorqueRange: {x: -2, y: 2}
   RandomDirection: 1
 --- !u!50 &7442702371884452560
 Rigidbody2D:

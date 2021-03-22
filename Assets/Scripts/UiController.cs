@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UiController : MonoBehaviour
 {
     [SerializeField] private GameObject gameplayCanvas;
+    [SerializeField] private GameObject tutorialCanvas;
     [SerializeField] private GameObject highScoreCanvas;
 
     [SerializeField] private TextMeshProUGUI ingameScore;
@@ -53,6 +54,7 @@ public class UiController : MonoBehaviour
         endScore.text = "SCORE: " + _score.ToString("0");
 
         gameplayCanvas.SetActive(false);
+        tutorialCanvas.SetActive(false);
         highScoreCanvas.SetActive(true);
     }
 

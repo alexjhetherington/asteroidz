@@ -56,8 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d60a15f4a49af1498a2d120610457d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 100
-  torque: 150
+  thrust: 70
+  torque: 170
 --- !u!114 &9108989519244548451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 2
-  m_AngularDrag: 20
+  m_AngularDrag: 30
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 3943822806336128918, guid: 1fa99e2556b601744b919fd3f1ba6f8e,
     type: 3}
-  cooldown: 0.2
-  ammoCost: 0.2
-  ammoRegen: 0.5
+  cooldown: 0.09
+  ammoCost: 0.19
+  ammoRegen: 0.45
 --- !u!1001 &727750081583817374
 PrefabInstance:
   m_ObjectHideFlags: 0
