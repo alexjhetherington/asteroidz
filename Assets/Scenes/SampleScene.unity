@@ -212,7 +212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 583140639}
   - component: {fileID: 583140640}
-  - component: {fileID: 583140642}
   - component: {fileID: 583140641}
   - component: {fileID: 583140638}
   m_Layer: 0
@@ -351,7 +350,12 @@ MonoBehaviour:
   - {x: 0.5, y: 2}
   - {x: 2, y: 4}
   - {x: 4, y: 6}
+  asteroidScoreProgression:
+  - 100
+  - 50
   asteroidPrefab: {fileID: 7442702371884452567, guid: a5f398f47cc8dc64e877b64a9e8988f8,
+    type: 3}
+  targetPrefab: {fileID: 4300125510876498725, guid: c2fe91078b02bd74dbb50fadf1872ac5,
     type: 3}
 --- !u!114 &583140641
 MonoBehaviour:
@@ -366,20 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 9211802997742120195, guid: 85f31b325e55acf4fbb8879acbc95670,
-    type: 3}
---- !u!114 &583140642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583140637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 072e94d8609180443a9b39e24ece83b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPrefab: {fileID: 4300125510876498725, guid: c2fe91078b02bd74dbb50fadf1872ac5,
     type: 3}
 --- !u!1 &625779781
 GameObject:

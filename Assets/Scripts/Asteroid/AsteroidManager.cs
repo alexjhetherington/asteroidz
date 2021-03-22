@@ -10,12 +10,13 @@ public class AsteroidManager : MonoBehaviour
 
     [SerializeField] private float[] asteroidScaleProgression;
     [SerializeField] private Vector2[] asteroidThrustProgression;
+    [SerializeField] private float[] asteroidScoreProgression;
 
     [Header("Setup")]
     [SerializeField] private GameObject asteroidPrefab;
+    [SerializeField] private GameObject targetPrefab;
 
     private Vector2 _screenSize;
-    private List<GameObject> _activeAsteroids = new List<GameObject>();
 
     private float _roundStartTime;
     private float _lastCreateAsteroidTime;
@@ -24,6 +25,7 @@ public class AsteroidManager : MonoBehaviour
     {
         MessageKit<AsteroidKillInfo>.addObserver(MessageIds.ASTEROID_KILLED, AsteroidKilled);
         MessageKit<Vector2>.addObserver(MessageIds.SCREEN_SIZE, UpdateScreenSize);
+        MessageKit.addObserver(MessageIds.INIT_RESTART, Restart);
         Restart();
     }
     
@@ -31,6 +33,7 @@ public class AsteroidManager : MonoBehaviour
     {
         MessageKit<AsteroidKillInfo>.removeObserver(MessageIds.ASTEROID_KILLED, AsteroidKilled);
         MessageKit<Vector2>.removeObserver(MessageIds.SCREEN_SIZE, UpdateScreenSize);
+        MessageKit.removeObserver(MessageIds.INIT_RESTART, Restart);
     }
 
     void Update()
@@ -44,11 +47,6 @@ public class AsteroidManager : MonoBehaviour
 
     public void Restart()
     {
-        for (int i = 0; i < _activeAsteroids.Count; i++)
-            TrashMan.despawn(_activeAsteroids[i]);
-
-        _activeAsteroids = new List<GameObject>();
-
         _roundStartTime = Time.time;
         
         StartCoroutine(CreateFirstAsteroid());
@@ -73,8 +71,6 @@ public class AsteroidManager : MonoBehaviour
 
     private void AsteroidKilled(AsteroidKillInfo killInfo)
     {
-        _activeAsteroids.Remove(killInfo.asteroid);
-
         int i;
         for (i = 0; i < asteroidScaleProgression.Length; i++)
         {
@@ -87,6 +83,18 @@ public class AsteroidManager : MonoBehaviour
             SpawnAsteroidPrefab(killInfo.asteroid.transform.position, asteroidScaleProgression[i], asteroidThrustProgression[i], false);
             SpawnAsteroidPrefab(killInfo.asteroid.transform.position, asteroidScaleProgression[i], asteroidThrustProgression[i], false);
         }
+
+        if(i-1 < asteroidScoreProgression.Length)
+        {
+            SpawnTarget(killInfo.asteroid.transform.position, asteroidScoreProgression[i-1]);
+        }
+    }
+
+    private void SpawnTarget(Vector3 position, float score)
+    {
+        GameObject target = TrashMan.spawn(targetPrefab, position);
+        TargetCollider targetCollider = target.GetComponent<TargetCollider>();
+        targetCollider.Score = score;
     }
 
     private void SpawnAsteroidPrefab(Vector3 position, float scale, Vector2 thrustRange, bool ghost)
@@ -98,8 +106,6 @@ public class AsteroidManager : MonoBehaviour
         asteroidChildController.SetScale(scale);
         initSpeedAndTorque.ThrustRange = thrustRange;
         initSpeedAndTorque.Go();
-
-        _activeAsteroids.Add(asteroid);
 
         if (ghost)
             asteroidChildController.SpawnAsGhost();
