@@ -12,6 +12,7 @@ Everything else is by me (if I add sounds and forget to update this md, this pro
 ### Differences from classic Asteroids
 * No space ships
 * No levels; the game runs continuously and asteroids spawn faster and faster
-* Asteroids don't provide scores
-* A new randomly assigned target that gives scores when flown into
-* Regenerating Ammo
+* Asteroids don't provide scores - instead they drop targets which give scores
+* Ammo limits
+
+See AsteroidManager to adjust score, size, speed and spawn behaviour of asteroids. See the player prefab to adjust handling
