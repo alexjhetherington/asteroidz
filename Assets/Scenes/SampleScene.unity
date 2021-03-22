@@ -349,7 +349,7 @@ MonoBehaviour:
   asteroidThrustProgression:
   - {x: 0.5, y: 2}
   - {x: 2, y: 4}
-  - {x: 4, y: 6}
+  - {x: 4, y: 4.5}
   asteroidScoreProgression:
   - 100
   - 50
@@ -670,7 +670,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

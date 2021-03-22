@@ -56,8 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d60a15f4a49af1498a2d120610457d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 70
-  torque: 170
+  thrust: 60
+  torque: 150
 --- !u!114 &9108989519244548451
 MonoBehaviour:
   m_ObjectHideFlags: 0
